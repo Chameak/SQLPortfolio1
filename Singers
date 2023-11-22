@@ -1,0 +1,35 @@
+/* Short table about a few artists and a couple things about them, along with very simple queries */
+
+CREATE TABLE singers(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+artist TEXT,
+hometown TEXT,
+Genre TEXT);
+
+INSERT INTO singers(artist, hometown, Genre) VALUES ("The Weeknd", "Canada", "Pop");
+INSERT INTO singers(artist, hometown, Genre) VALUES ("TEMS","Lagos", "R&B");
+INSERT INTO singers(artist, hometown, Genre) VALUES ("SZA", "St. Louis", "R&B");
+CREATE TABLE songs(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+artist_id INTEGER,
+song_name TEXT);
+
+Insert Into songs(artist_id,song_name) VALUES (1, "Starboy");
+Insert Into songs(artist_id,song_name) VALUES (1, "Valerie");
+Insert Into songs(artist_id,song_name) VALUES (2, "Snooze");
+Insert Into songs(artist_id,song_name) VALUES (2, "Normal Girl");
+Insert Into songs(artist_id ,song_name) VALUES (3, "These Days");
+Insert Into songs(artist_id ,song_name) VALUES (3, "Higher");
+
+/* grouping together all of the artists listed and some of the songs theyve made*/
+
+SELECT artist, song_name, hometown
+FROM singers
+JOIN songs
+ON singers.id = songs.artist_id;
+
+/* Selecting the only artist from Lagos, Nigeria*/
+
+SELECT artist 
+FROM singers
+WHERE hometown = "Lagos";
