@@ -1,0 +1,35 @@
+/* Blood Bank Donors*/
+
+Create Table BBdonors 
+(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, "blood type" TEXT);
+
+Insert Into BBdonors ( name, age, "blood type") VALUES ("John Doe", 24, "B +");
+Insert Into BBdonors ( name, age, "blood type") VALUES ("Jane Doe", 27, "B -");
+Insert Into BBdonors ( name, age, "blood type") VALUES ("John Day", 35, "O -");
+Insert Into BBdonors ( name, age, "blood type") VALUES ("Joe Doe", 40, "AB +");
+Insert Into BBdonors ( name, age, "blood type") VALUES ("Jay Doe", 38, "A +");
+
+Create Table BBpatients 
+(id INTEGER PRIMARY KEY AUTOINCREMENT, p_name TEXT, p_age INTEGER, "blood type" TEXT);
+
+Insert Into BBpatients ( p_name, p_age, "blood type") VALUES ("Blake Griffin", 39, "B +");
+Insert Into BBpatients ( p_name, p_age, "blood type") VALUES ("Dwight Howard", 27, "B -");
+Insert Into BBpatients ( p_name, p_age, "blood type") VALUES ("Kevin Garnett", 35, "O -");
+Insert Into BBpatients ( p_name, p_age, "blood type") VALUES ("Charles Barkley", 40, "AB +");
+Insert Into BBpatients ( p_name, p_age, "blood type") VALUES ("Dirk Nowitzki", 38, "A +");
+/* adding test results to donor profiles*/
+
+Alter Table BBdonors ADD "Blood Test Results" TEXT default "TBD";
+
+Insert Into BBdonors ( name, age, "blood type", "Blood Test Results") VALUES ("John Johnson", 29, "B +", "FAIL");
+
+UPDATE BBdonors SET "Blood Test Results" = "PASS" Where id = 1;
+UPDATE BBdonors SET "Blood Test Results" = "FAIL" Where id = 2;
+UPDATE BBdonors SET "Blood Test Results" = "PASS" Where id = 3;
+UPDATE BBdonors SET "Blood Test Results" = "PASS" Where id = 4;
+UPDATE BBdonors SET "Blood Test Results" = "PASS" Where id = 5;
+SELECT * FROM BBdonors;
+/* deleting failed blood tests from donation eligibilty*/
+
+DELETE FROM BBdonors Where "Blood Test Results" = "FAIL";
+SELECT * FROM BBdonors;
